@@ -3,6 +3,7 @@
 spikes/**/.project
 spikes/**/.classpath
 spikes/**/.cache
+spikes/**/.settings
 
 spikes/**/bin/*
 
