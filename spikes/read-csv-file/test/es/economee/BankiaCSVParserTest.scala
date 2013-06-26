@@ -16,8 +16,24 @@ class BankiaCSVParserTest extends FunSuite with ShouldMatchers {
     "foo" should be("foo")
   }
   
-  test("parser must parse movement concept") {
+  test("parser must parse all movements of the file") {
     val movements = parser.parse
     movements.size should be(27)
   }
+  
+  test("first parsed movement concept should be: 'EXPENDURIA DE TABA'") {
+    val movements = parser.parse
+    movements(0).concept should be("EXPENDURIA DE TABA")
+  }
+  
+  test("first parsed movement date should be: '30/05/2013'") {
+    val movements = parser.parse
+    movements(0).date should be("30/05/2013")
+  }
+  
+  test("first parsed movement amount should be: '-110,60'") {
+    val movements = parser.parse
+    movements(0).amount should be("-110,60")
+  }
+  
 }

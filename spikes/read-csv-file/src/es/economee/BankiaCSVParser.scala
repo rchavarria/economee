@@ -13,7 +13,7 @@ class BankiaCSVParser(csvPath: String) {
     val infoLines = rawLines.drop(5) // skip first 4 lines
     val movementLines = infoLines.filter(_.length > 0)
     
-    var movements: List[Movement] = List()
+    val movements = mutable.ListBuffer[Movement]()
     for(line <- movementLines) {
       val translatedLine = line.replace("\",\"", "\";\"")
       val fields = List.fromArray(translatedLine.split(";"))
@@ -21,14 +21,21 @@ class BankiaCSVParser(csvPath: String) {
       
       println("Movement date: " + getDate(fields));
       
-      var m = new Movement("bla bla")
-      movements ::= m
+      movements += new Movement(getConcept(fields), getDate(fields), getAmount(fields))
     }
     
-    return movements
+    movements.toList
+  }
+
+  private def getConcept(fields: List[String]) = {
+    fields(2).replace("\"", "")
   }
   
   private def getDate(fields: List[String]): String = {
     fields(1).replace("\"", "")
+  }
+  
+  private def getAmount(fields: List[String]) = {
+    fields(3).replace("\"", "")
   }
 }

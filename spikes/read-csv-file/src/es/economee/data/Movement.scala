@@ -2,6 +2,5 @@ package es.economee.data
 
 import java.util.Date
 
-class Movement(concept: String) {
-
+class Movement(val concept: String, val date: String, val amount: String) {
 }
