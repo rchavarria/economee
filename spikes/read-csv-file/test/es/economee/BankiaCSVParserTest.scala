@@ -8,14 +8,13 @@ import scala.runtime.BoxedUnit
 import java.lang.reflect.Method
 import org.scalatest.matchers.ShouldMatchers
 import java.util.Date
+import java.util.Locale
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
 
 class BankiaCSVParserTest extends FunSuite with ShouldMatchers {
 
   val parser = new BankiaCSVParser("test/bankia-example.csv")
-  
-  test("This is my first test") {
-    "foo" should be("foo")
-  }
   
   test("parser must parse all movements of the file") {
     val movements = parser.parse
@@ -28,14 +27,16 @@ class BankiaCSVParserTest extends FunSuite with ShouldMatchers {
   }
   
   test("first parsed movement date should be: '30/05/2013'") {
-    val expectedDate = new java.text.SimpleDateFormat("dd/MM/yyyy").parse("30/05/2013")
+    val expectedDate = new SimpleDateFormat("dd/MM/yyyy").parse("30/05/2013")
     val movements = parser.parse
     movements(0).date should be(expectedDate)
   }
   
-  test("first parsed movement amount should be: '-110,60'") {
+  test("first parsed movement amount should be: '-110,60' but expressed in miliEuros") {
+    val expectedAmount = -110600
+    
     val movements = parser.parse
-    movements(0).amount should be("-110,60")
+    movements(0).amount should be(expectedAmount)
   }
   
 }
