@@ -3,8 +3,12 @@ package es.economee
 import scala.io.Source
 import scala.collection.mutable
 import es.economee.data.Movement
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class BankiaCSVParser(csvPath: String) {
+  
+  val formatter = new SimpleDateFormat("dd/MM/yyyy")
 
   def parse(): List[Movement] = {
     println("Reading CVS file: " + csvPath)
@@ -17,10 +21,6 @@ class BankiaCSVParser(csvPath: String) {
     for(line <- movementLines) {
       val translatedLine = line.replace("\",\"", "\";\"")
       val fields = List.fromArray(translatedLine.split(";"))
-      println("line contains " + fields.length + " fields {" + fields + "}")
-      
-      println("Movement date: " + getDate(fields));
-      
       movements += new Movement(getConcept(fields), getDate(fields), getAmount(fields))
     }
     
@@ -31,8 +31,9 @@ class BankiaCSVParser(csvPath: String) {
     fields(2).replace("\"", "")
   }
   
-  private def getDate(fields: List[String]): String = {
-    fields(1).replace("\"", "")
+  private def getDate(fields: List[String]): Date = {
+    val strDate = fields(1).replace("\"", "")
+    formatter.parse(strDate)
   }
   
   private def getAmount(fields: List[String]) = {

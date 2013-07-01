@@ -7,6 +7,7 @@ import scala.reflect.Manifest
 import scala.runtime.BoxedUnit
 import java.lang.reflect.Method
 import org.scalatest.matchers.ShouldMatchers
+import java.util.Date
 
 class BankiaCSVParserTest extends FunSuite with ShouldMatchers {
 
@@ -27,8 +28,9 @@ class BankiaCSVParserTest extends FunSuite with ShouldMatchers {
   }
   
   test("first parsed movement date should be: '30/05/2013'") {
+    val expectedDate = new java.text.SimpleDateFormat("dd/MM/yyyy").parse("30/05/2013")
     val movements = parser.parse
-    movements(0).date should be("30/05/2013")
+    movements(0).date should be(expectedDate)
   }
   
   test("first parsed movement amount should be: '-110,60'") {
