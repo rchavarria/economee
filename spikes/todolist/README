@@ -1,4 +1,25 @@
 This is your new Play 2.1 application
 =====================================
 
-This file will be packaged with your application, when using `play dist`.
+Scala application using Play 2.1 framework following this tutorial:
+http://www.playframework.com/documentation/2.1.1/ScalaTodoList
+
+Some learned play commands / way to do things:
+
+- `play new <app name>`: creates a new application
+- In play console: `run` runs the application
+- file `conf/routes` defines all application's accesible URLs
+- a class of our data model is defined using a `case class` plus some static methods
+in an object of the same name. so, to define a data model class named `Task`, use:
+
+	case class Task(id: Long, name: String)
+
+	object Task {
+		def all(): List[Task] = Nil // returns null
+		//...
+	}
+
+- views are defined in .scala.html files, as templates. Lear about 
+[Templating system](http://www.playframework.com/documentation/2.1.1/ScalaTemplates)
+(it seems to be not very easy)
+- [Form definitions and submissions](http://www.playframework.com/documentation/2.1.1/ScalaForms)
