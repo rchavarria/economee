@@ -23,3 +23,7 @@ in an object of the same name. so, to define a data model class named `Task`, us
 [Templating system](http://www.playframework.com/documentation/2.1.1/ScalaTemplates)
 (it seems to be not very easy)
 - [Form definitions and submissions](http://www.playframework.com/documentation/2.1.1/ScalaForms)
+- One can config the database in `conf/application.conf` file
+- [Evolutions (of database)](http://www.playframework.com/documentation/2.1.1/Evolutions)
+- Using [Anorm](http://www.playframework.com/documentation/2.1.1/ScalaAnorm) to query the database
+- 
