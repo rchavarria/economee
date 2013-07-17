@@ -12,9 +12,9 @@ object Movement {
 
   // anorm parser for Task
   val movementParser = {
-    get[Long]("id") ~ 
-    get[String]("concept") ~
-    get[Long]("amount") map {
+    long("id") ~ 
+    str("concept") ~
+    long("amount") map {
       case id~concept~amount => Movement(id, concept, amount)
     }
   }
