@@ -1,0 +1,17 @@
+@(movements: List[Movement])
+
+@import helper._
+
+@main("Movement list") {
+    
+    <h1>@movements.size movement(s)</h1>
+    
+    <ul>
+        @movements.map { mov =>
+            <li>
+                @mov.concept
+            </li>
+        }
+    </ul>
+    
+}

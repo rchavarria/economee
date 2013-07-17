@@ -11,11 +11,16 @@ object Application extends Controller {
   
   def index = Action {
   	// redirect to the list of tasks
-    Redirect(routes.Application.tasks)
+    // Redirect(routes.Application.tasks)
+    Redirect(routes.Application.movements)
   }
 
   def tasks = Action {
-  	Ok(views.html.index(Task.all(), taskForm))
+    Ok(views.html.index(Task.all(), taskForm))
+  }
+  
+  def movements = Action {
+  	Ok(views.html.movements(Movement.all()))
   }
   
   def newTask = Action { implicit request =>

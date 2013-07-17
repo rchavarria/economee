@@ -10,5 +10,10 @@ GET     /tasks                  controllers.Application.tasks
 POST    /tasks                  controllers.Application.newTask
 POST    /tasks/:id/delete       controllers.Application.deleteTask(id: Long)
 
+# Movements
+GET     /movements                  controllers.Application.movements
+#POST    /tasks                  controllers.Application.newTask
+#POST    /tasks/:id/delete       controllers.Application.deleteTask(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
