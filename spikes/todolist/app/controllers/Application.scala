@@ -1,5 +1,7 @@
 package controllers
 
+import java.util._
+
 import play.api._
 import play.api.data._
 import play.api.data.Forms._
@@ -9,6 +11,8 @@ import models._
 
 object Application extends Controller {
   
+  val r = new Random
+
   def index = Action {
   	// redirect to the list of tasks
     // Redirect(routes.Application.tasks)
@@ -20,6 +24,9 @@ object Application extends Controller {
   }
   
   def movements = Action {
+    // creates a dummy movement
+    Movement.create("oh my gosh!", new Date(), r.nextInt(100) * 1000)
+
   	Ok(views.html.movements(Movement.all()))
   }
   

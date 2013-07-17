@@ -25,4 +25,14 @@ object Movement {
     SQL("select * from movement").as(movementParser *)
   }
   
+  def create(concept: String, date: Date, amount: Long) {
+    DB.withConnection { implicit c =>
+      SQL("insert into movement (concept, date, amount) values ({concept}, {date}, {amount})").on(
+        'concept -> concept,
+        'date -> date.getTime,
+        'amount -> amount
+      ).executeUpdate()
+    }
+  }
+  
 }
