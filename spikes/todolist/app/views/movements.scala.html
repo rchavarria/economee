@@ -9,7 +9,9 @@
     <ul>
         @movements.map { mov =>
             <li>
-                Concept: @mov.concept, Amount: @mov.amount, Date: @mov.date.toString()
+                Concept: @mov.concept, 
+                Amount: @mov.amount €, 
+                Date: @java.text.DateFormat.getDateInstance().format(mov.date)
             </li>
         }
     </ul>
