@@ -9,7 +9,7 @@
     <ul>
         @movements.map { mov =>
             <li>
-                Concept: @mov.concept, Amount: @mov.amount
+                Concept: @mov.concept, Amount: @mov.amount, Date: @mov.date.toString()
             </li>
         }
     </ul>

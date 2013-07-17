@@ -12,11 +12,12 @@ CREATE SEQUENCE movement_id_seq;
 CREATE TABLE movement (
 	id INT NOT NULL DEFAULT nextval('movement_id_seq'),
 	concept VARCHAR(255) NOT NULL,
+	date BIGINT NOT NULL,
 	amount BIGINT NOT NULL
 );
 
-INSERT INTO movement (concept, amount) VALUES ('primer conceto', 12345);
-INSERT INTO movement (concept, amount) VALUES ('secondo conceto', 54321);
+INSERT INTO movement (concept, date, amount) VALUES ('primer conceto', 1122334455, 12345);
+INSERT INTO movement (concept, date, amount) VALUES ('secondo conceto', 1122334457, 54321);
 
 # --- !Downs
  
