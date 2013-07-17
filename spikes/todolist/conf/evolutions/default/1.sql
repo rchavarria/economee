@@ -11,11 +11,12 @@ CREATE TABLE task (
 CREATE SEQUENCE movement_id_seq;
 CREATE TABLE movement (
 	id INT NOT NULL DEFAULT nextval('movement_id_seq'),
-	concept VARCHAR(255) NOT NULL
+	concept VARCHAR(255) NOT NULL,
+	amount BIGINT NOT NULL
 );
 
-INSERT INTO movement (concept) VALUES ('primer conceto');
-INSERT INTO movement (concept) VALUES ('secondo conceto');
+INSERT INTO movement (concept, amount) VALUES ('primer conceto', 12345);
+INSERT INTO movement (concept, amount) VALUES ('secondo conceto', 54321);
 
 # --- !Downs
  

@@ -6,15 +6,16 @@ import play.api.db._
 import play.api.Play.current
 
 // Model
-case class Movement(id: Long, concept: String)
+case class Movement(id: Long, concept: String, amount: Long)
 
 object Movement {
 
   // anorm parser for Task
   val movementParser = {
     get[Long]("id") ~ 
-    get[String]("concept") map {
-      case id~concept => Movement(id, concept)
+    get[String]("concept") ~
+    get[Long]("amount") map {
+      case id~concept~amount => Movement(id, concept, amount)
     }
   }
 
